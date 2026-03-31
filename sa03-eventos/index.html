@@ -1,0 +1,69 @@
+<!-- Crie o HTML com o formulário e os IDs correspondentes.
+Crie um botão flutuante ou no topo para "Alternar Modo Escuro".
+Estilize uma classe .dark-mode no CSS para mudar as cores do fundo e do texto.
+Ao clicar em "Enviar", o JavaScript deve impedir o envio padrão (preventDefault).
+Verifique se todos os 5 campos estão preenchidos.
+Se algum estiver vazio, exiba uma mensagem de erro em vermelho na tela.
+Se os dados forem válidos, crie dinamicamente um "Card de Convidado" dentro de uma <ul> ou <div>.
+Este card deve mostrar o  e o  do convidado.
+Adicione um botão "Remover" em cada card que, ao ser clicado, exclua aquele convidado da lista.
+Após o cadastro bem-sucedido, limpe todos os campos do formulário.
+Adicione um evento de teclado: ao pressionar a tecla "ESC", o formulário deve ser limpo automaticamente. -->
+
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventMaster | Rian</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <!-- form -->
+    <form action="" id="convidadoForm">
+      <h1>EventMaster | Sistema de Entrada</h1>
+      <div id="form-field">
+      <label for="nome">* Nome do convidado:</label>
+      <input type="text" placeholder="Ex: Rian Eduardo" name="nome"  id="nomeConvidado">
+      </div>
+
+      <div id="form-field">
+      <label for="sobrenome">Sobrenome do convidado:</label>
+      <input type="text" placeholder="Ex: Pereira (Opcional)" name="sobrenome"  id="sobrenomeConvidado">
+      </div>
+
+      <div id="form-field">
+      <label for="dataNasc">* Data de nascimento:</label>
+      <input type="date" placeholder="Data de nascimento" name="dataNasc"  id="dataNascConvidado">
+      </div>
+
+      <div id="form-field">
+      <label for="cpf">* CPF do convidado:</label>
+      <input type="text" placeholder="Ex: 49199281813" name="cpf"  id="cpfConvidado">
+      </div>
+
+      <div id="form-field">
+      <label for="code">* Código de convite:</label>
+      <input type="text" placeholder="Ex: 123456" name="code"  id="codeConvidado">
+      </div>
+      <button type="submit" id="btnEnviar">Checar...</button>
+    </form>
+
+    <!-- botaozinho do dark mode -->
+     <button id="btnDm">
+      <i class="fa-solid fa-sun" id="iconBtnDm"></i>
+     </button>
+
+    <!-- container dos convidados -->
+    <div id="convidadosContainer">
+      <h1>Lista de Convidados</h1>
+      <p id="convidadosContador">Total de convidados: 0</p>
+      <span>[ESC] Limpar lista</span>
+      <ul id="convidadosList"></ul>
+    </div>
+  </main>
+</body>
+<script src="https://kit.fontawesome.com/9e07d1881e.js" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</html>

@@ -30,10 +30,16 @@ function atualizarGaleria() {
     img.src = imagem;
     let btnRemove = document.createElement("button");
     btnRemove.classList.add("btnRemover");
+    let icon = document.createElement("i")
+    icon.classList.add("fa-solid")
+    icon.classList.add("gap-icon");
+    icon.classList.add("fa-trash");
     btnRemove.innerText = "Deletar";
+    btnRemove.appendChild(icon)
     btnRemove.addEventListener("click", () => {
       imagens.splice(index, 1);
       atualizarGaleria();
+      atualizarCarrossel();
     });
     div.appendChild(img);
     div.appendChild(btnRemove);
@@ -45,24 +51,33 @@ function atualizarGaleria() {
 
 function atualizarCarrossel() {
   carrossel.innerHTML = "";
+
   imagens.forEach((imagem) => {
     let img = document.createElement("img");
     img.src = imagem;
+    img.style.height = "600px";
     img.style.width = "100%";
-    img.style.height = "600px"
     carrossel.appendChild(img);
   });
-  carrossel.style.width = `${imagens.length * 100}%`;
+
   iniciarCarrossel();
 }
 
 // Init do carrossel
 
+let intervalo;
+
 function iniciarCarrossel() {
+  if (imagens.length === 0) return;
+
   let index = 0;
-  setInterval(() => {
+
+  clearInterval(intervalo);
+
+  intervalo = setInterval(() => {
     index = (index + 1) % imagens.length;
-    carrossel.style.transition = `transform ${(1 + imagens.length) / imagens.length}s ease-in-out`;
-    carrossel.style.transform = `translateX(-${(index * 100) / imagens.length}%)`;
+
+    carrossel.style.transition = "transform 0.5s ease-in-out";
+    carrossel.style.transform = `translateX(-${index * 100}%)`;
   }, 2000);
 }
